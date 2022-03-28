@@ -51,13 +51,11 @@ void Widget::on_buttonSetting_clicked()
 
 void Widget::showResult(QString res)
 {
-    qDebug() << "res";
     ui->textBrowseroutput->setText(res);
 }
 
 void Widget::showError(QString err)
 {
-    qDebug() << "err";
     ui->textBrowseroutput->setText("获取结果出错，请检查您的配置: " + err);
 }
 

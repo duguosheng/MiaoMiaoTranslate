@@ -17,7 +17,6 @@ void BaiduApi::replyFinished(QNetworkReply *reply)
 {
     if (reply->error() != QNetworkReply::NoError) {
         emit queryFail("Network Error");
-        qDebug() << "error1";
         return;
     }
     QString all = reply->readAll();
@@ -28,7 +27,6 @@ void BaiduApi::replyFinished(QNetworkReply *reply)
     auto errMsg = jsonObject["error_msg"].toString();
     if (!errMsg.isEmpty()) {
         emit queryFail(errMsg);
-        qDebug() << "error2";
         return;
     }
     auto resultArr = jsonObject.value("trans_result").toArray();
@@ -39,7 +37,6 @@ void BaiduApi::replyFinished(QNetworkReply *reply)
     }
 
     emit queryOk(res);
-    qDebug() << "ok";
 }
 
 void BaiduApi::setTransLang(bool enToZh)

@@ -8,4 +8,4 @@
    * 仅删除无断句符的换行符，即如果当前的换行符前没有句号，叹号，问号，就将其删除
 2. **支持复制翻译，选中文本按下复制键后，自动将剪切板内容进行翻译并显示**
 
-![img](images/screenshot1.png)![img](images/screenshot2.png)
+![img](images/screenshot.png)
