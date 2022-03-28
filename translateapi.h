@@ -19,9 +19,9 @@ public:
     QString toLang;
     QNetworkAccessManager *manager;
     virtual void setTransLang(bool enToZh) = 0;
-    virtual QString getUrl(QString& text) = 0;
+    virtual QUrl getUrl(QString& text) = 0;
     virtual void query(QString& text);
-    QString calculateMd5(const QString& text);
+    QString calculateHash(const QString& text, QCryptographicHash::Algorithm algo = QCryptographicHash::Md5);
     void rmLineBreak(QString& text);
 
     explicit TranslateAPI(QObject *parent = nullptr);

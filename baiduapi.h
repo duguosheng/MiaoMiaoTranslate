@@ -8,7 +8,7 @@ class BaiduApi : public TranslateAPI
     Q_OBJECT
 public:
     void setTransLang(bool enToZh) override;
-    QString getUrl(QString& text) override;
+    QUrl getUrl(QString& text) override;
 
     explicit BaiduApi(QObject *parent = nullptr);
 private:

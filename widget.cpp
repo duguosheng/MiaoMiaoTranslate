@@ -65,10 +65,8 @@ void Widget::querySelect()
     ui->textEditInput->setPlainText(text);
 
     move(cursor().pos());
-    qDebug() << windowState();
     activateWindow();
     raise();
-    qDebug() << windowState();
 
     currentApi->query(text);
 }

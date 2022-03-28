@@ -49,14 +49,21 @@ void BaiduApi::setTransLang(bool enToZh)
     }
 }
 
-QString BaiduApi::getUrl(QString &text)
+QUrl BaiduApi::getUrl(QString &text)
 {
-    QString res;
+    QUrl res(baseUrl);
     QString sign = appid + text + salt + secretKey;
-    QString signMd5 = calculateMd5(sign);
-    // 对查询文本中的特殊字符进行转义后进行拼接
-    res = baseUrl + "?q=" + QString(text.toUtf8().toPercentEncoding("", "#%&?=/")) + "&from=" + fromLang + "&to=" + toLang
-        + "&appid=" + appid + "&salt=" + salt + "&sign=" + signMd5;
+    QString signHash = calculateHash(sign);
+
+    QUrlQuery query;
+    query.addQueryItem("q",     text);
+    query.addQueryItem("from",  fromLang);
+    query.addQueryItem("to",    toLang);
+    query.addQueryItem("appid", appid);
+    query.addQueryItem("salt",  salt);
+    query.addQueryItem("sign",  signHash);
+
+    res.setQuery(query);
     return res;
 }
 

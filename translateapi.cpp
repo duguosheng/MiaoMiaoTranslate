@@ -12,13 +12,13 @@ TranslateAPI::TranslateAPI(QObject *parent)
 void TranslateAPI::query(QString &text)
 {
     rmLineBreak(text);
-    QString url = getUrl(text);
-    manager->get(QNetworkRequest(QUrl(url)));
+    QUrl url = getUrl(text);
+    manager->get(QNetworkRequest(url));
 }
 
-QString TranslateAPI::calculateMd5(const QString& text)
+QString TranslateAPI::calculateHash(const QString& text, QCryptographicHash::Algorithm algo)
 {
-    return QString(QCryptographicHash::hash(text.toUtf8(), QCryptographicHash::Md5).toHex());
+    return QString(QCryptographicHash::hash(text.toUtf8(), algo).toHex());
 }
 
 void TranslateAPI::rmLineBreak(QString &text)
