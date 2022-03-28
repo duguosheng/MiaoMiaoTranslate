@@ -19,7 +19,7 @@ public:
     QString toLang;
     QNetworkAccessManager *manager;
     virtual void setTransLang(bool enToZh) = 0;
-    virtual QString getUrl(const QString& text) = 0;
+    virtual QString getUrl(QString& text) = 0;
     virtual void query(QString& text);
     QString calculateMd5(const QString& text);
     void rmLineBreak(QString& text);

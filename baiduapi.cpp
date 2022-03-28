@@ -20,7 +20,6 @@ void BaiduApi::replyFinished(QNetworkReply *reply)
         return;
     }
     QString all = reply->readAll();
-    qDebug() << all;
     reply->deleteLater();
     QJsonDocument jsonDoc = QJsonDocument::fromJson(all.toUtf8());
     QJsonObject jsonObject = jsonDoc.object();
@@ -50,12 +49,13 @@ void BaiduApi::setTransLang(bool enToZh)
     }
 }
 
-QString BaiduApi::getUrl(const QString &text)
+QString BaiduApi::getUrl(QString &text)
 {
     QString res;
     QString sign = appid + text + salt + secretKey;
     QString signMd5 = calculateMd5(sign);
-    res = baseUrl + "?q=" + text + "&from=" + fromLang + "&to=" + toLang
+    // 对查询文本中的特殊字符进行转义后进行拼接
+    res = baseUrl + "?q=" + QString(text.toUtf8().toPercentEncoding("", "#%&?=/")) + "&from=" + fromLang + "&to=" + toLang
         + "&appid=" + appid + "&salt=" + salt + "&sign=" + signMd5;
     return res;
 }

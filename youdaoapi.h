@@ -8,7 +8,7 @@ class YoudaoApi : public TranslateAPI
     Q_OBJECT
 public:
     void setTransLang(bool enToZh) override;
-    QString getUrl(const QString& text) override;
+    QString getUrl(QString& text) override;
     void query(QString& text) override;
 
     explicit YoudaoApi(QObject *parent = nullptr);

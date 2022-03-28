@@ -19,7 +19,7 @@ void YoudaoApi::setTransLang(bool enToZh)
 
 }
 
-QString YoudaoApi::getUrl(const QString &text)
+QString YoudaoApi::getUrl(QString &text)
 {
     return "";
 }
