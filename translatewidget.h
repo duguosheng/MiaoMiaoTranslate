@@ -1,21 +1,21 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef TRANSLATEWIDGET_H
+#define TRANSLATEWIDGET_H
 
 #include <QWidget>
 #include <QClipboard>
 #include "settingdialog.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Widget; }
+namespace Ui { class TranslateWidget; }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
+class TranslateWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
+    TranslateWidget(QWidget *parent = nullptr);
+    ~TranslateWidget();
 
 private slots:
     void on_buttonLanguage_clicked(bool checked);
@@ -27,9 +27,9 @@ private slots:
     void readSetting();
 
 private:
-    Ui::Widget *ui;
+    Ui::TranslateWidget *ui;
     QClipboard *clip;
     SettingDialog *settingDialog = nullptr;
     void initSetting();
 };
-#endif // WIDGET_H
+#endif // TRANSLATEWIDGET_H

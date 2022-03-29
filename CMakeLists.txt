@@ -16,12 +16,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        widget.cpp widget.h widget.ui
+        translatewidget.cpp translatewidget.h translatewidget.ui
         common.h common.cpp
         translateapi.h translateapi.cpp
         baiduapi.h baiduapi.cpp
         youdaoapi.h youdaoapi.cpp
         settingdialog.h settingdialog.cpp settingdialog.ui
+        mainwindow.h mainwindow.cpp mainwindow.ui
 )
 
 set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/translation.rc")

@@ -1,30 +1,31 @@
-#include "widget.h"
-#include "./ui_widget.h"
+#include "translatewidget.h"
+#include "./ui_translatewidget.h"
 #include "common.h"
 
 #include <QDir>
 
-Widget::Widget(QWidget *parent)
+TranslateWidget::TranslateWidget(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Widget)
+    , ui(new Ui::TranslateWidget)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     initSetting();
-    connect(baidu, SIGNAL(queryOk(QString)), this, SLOT(showResult(QString)));
-    connect(youdao, SIGNAL(queryOk(QString)), this, SLOT(showResult(QString)));
-    connect(baidu, SIGNAL(queryFail(QString)), this, SLOT(showError(QString)));
+    connect(baidu,  SIGNAL(queryOk(QString)),   this, SLOT(showResult(QString)));
+    connect(baidu,  SIGNAL(queryFail(QString)), this, SLOT(showError(QString)));
+    connect(youdao, SIGNAL(queryOk(QString)),   this, SLOT(showResult(QString)));
     connect(youdao, SIGNAL(queryFail(QString)), this, SLOT(showError(QString)));
     settingDialog = new SettingDialog(this);
-    connect(settingDialog, &SettingDialog::settingChanged, this, &Widget::readSetting);
+    connect(settingDialog, &SettingDialog::settingChanged, this, &TranslateWidget::readSetting);
 }
 
-Widget::~Widget()
+TranslateWidget::~TranslateWidget()
 {
     delete ui;
 }
 
 
-void Widget::on_buttonLanguage_clicked(bool checked)
+void TranslateWidget::on_buttonLanguage_clicked(bool checked)
 {
     if (checked) {
         currentApi->setTransLang(false);
@@ -35,43 +36,43 @@ void Widget::on_buttonLanguage_clicked(bool checked)
     }
 }
 
-void Widget::on_buttonTranslate_clicked()
+void TranslateWidget::on_buttonTranslate_clicked()
 {
     QString text = ui->textEditInput->toPlainText();
     currentApi->query(text);
 }
 
 
-void Widget::on_buttonSetting_clicked()
+void TranslateWidget::on_buttonSetting_clicked()
 {
     // 设置为模态
     settingDialog->setModal(true);
     settingDialog->show();
 }
 
-void Widget::showResult(QString res)
+void TranslateWidget::showResult(QString res)
 {
     ui->textBrowseroutput->setText(res);
 }
 
-void Widget::showError(QString err)
+void TranslateWidget::showError(QString err)
 {
-    ui->textBrowseroutput->setText("获取结果出错，请检查您的配置: " + err);
+    ui->textBrowseroutput->setText("获取结果出错，请检查您的配置！" + err);
 }
 
-void Widget::querySelect()
+void TranslateWidget::querySelect()
 {
     QString text = clip->text();
     ui->textEditInput->setPlainText(text);
 
-    move(cursor().pos());
-    activateWindow();
-    raise();
+//    move(cursor().pos());
+//    activateWindow();
+//    raise();
 
     currentApi->query(text);
 }
 
-void Widget::readSetting()
+void TranslateWidget::readSetting()
 {
     // 读取配置
     // 百度API配置
@@ -93,9 +94,9 @@ void Widget::readSetting()
     selectTrans = setting->value("selecttrans", false).toBool();
 
     if (selectTrans)
-        connect(clip, &QClipboard::dataChanged, this, &Widget::querySelect);
+        connect(clip, &QClipboard::dataChanged, this, &TranslateWidget::querySelect);
     else
-        disconnect(clip, &QClipboard::dataChanged, this, &Widget::querySelect);
+        disconnect(clip, &QClipboard::dataChanged, this, &TranslateWidget::querySelect);
 
     if (setting->value("api", "baidu").toString() == "baidu")
         currentApi = baidu;
@@ -112,7 +113,7 @@ void Widget::readSetting()
     setting->endGroup();
 }
 
-void Widget::initSetting()
+void TranslateWidget::initSetting()
 {
     QCoreApplication::setOrganizationName("DuGuosheng");
     QCoreApplication::setOrganizationDomain("dgs.zone");
