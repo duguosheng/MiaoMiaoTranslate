@@ -13,7 +13,49 @@
   <property name="windowTitle">
    <string>妙妙翻译</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="4">
+     <widget class="QPlainTextEdit" name="textEditInput"/>
+    </item>
+    <item row="1" column="1">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>213</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="buttonLanguage">
+      <property name="text">
+       <string>英文-&gt;中文</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QPushButton" name="buttonTranslate">
+      <property name="text">
+       <string>翻译</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="4">
+     <widget class="QTextBrowser" name="textBrowseroutput"/>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -23,9 +65,48 @@
      <height>17</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu_O">
+    <property name="title">
+     <string>选项(&amp;O)</string>
+    </property>
+    <addaction name="action_S"/>
+    <addaction name="action_T"/>
+   </widget>
+   <addaction name="menu_O"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_S">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/image/images/setting.png</normaloff>:/image/images/setting.png</iconset>
+   </property>
+   <property name="text">
+    <string>设置(&amp;S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+,</string>
+   </property>
+  </action>
+  <action name="action_T">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/image/images/topping.png</normaloff>
+     <normalon>:/image/images/untopping.png</normalon>
+     <selectedon>:/image/images/untopping.png</selectedon>:/image/images/topping.png</iconset>
+   </property>
+   <property name="text">
+    <string>窗口置顶(&amp;T)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -21,8 +21,10 @@ set(PROJECT_SOURCES
         translateapi.h translateapi.cpp
         baiduapi.h baiduapi.cpp
         youdaoapi.h youdaoapi.cpp
+        apimanager.h apimanager.cpp
         settingdialog.h settingdialog.cpp settingdialog.ui
         mainwindow.h mainwindow.cpp mainwindow.ui
+        images.qrc
 )
 
 set(APP_ICON_RESOURCE_WINDOWS "${CMAKE_CURRENT_SOURCE_DIR}/translation.rc")

@@ -6,10 +6,6 @@
 #include "youdaoapi.h"
 
 extern QSettings* setting;
-extern BaiduApi* baidu;
-extern YoudaoApi* youdao;
-extern TranslateAPI* currentApi;
-extern bool selectTrans;
 
 void autoStart(bool isAutoRun);
 #endif // COMMON_H

@@ -3,10 +3,6 @@
 #include <QDir>
 
 QSettings* setting = nullptr;
-BaiduApi* baidu = nullptr;
-YoudaoApi* youdao = nullptr;
-TranslateAPI* currentApi = nullptr;
-bool selectTrans = false;
 
 /**
  * @brief appAutoRun 设置开机自启动

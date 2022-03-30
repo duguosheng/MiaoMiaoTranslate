@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>images/setting.png</file>
+        <file>images/topping.png</file>
+        <file>images/untopping.png</file>
+    </qresource>
+</RCC>

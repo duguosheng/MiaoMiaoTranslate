@@ -3,7 +3,10 @@
 
 #include <QWidget>
 #include <QClipboard>
+#include <QTimer>
+#include <QPropertyAnimation>
 #include "settingdialog.h"
+#include "apimanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TranslateWidget; }
@@ -16,20 +19,25 @@ class TranslateWidget : public QWidget
 public:
     TranslateWidget(QWidget *parent = nullptr);
     ~TranslateWidget();
+    void readSetting();
 
 private slots:
     void on_buttonLanguage_clicked(bool checked);
     void on_buttonTranslate_clicked();
-    void on_buttonSetting_clicked();
     void showResult(QString res);
     void showError(QString err);
     void querySelect();
-    void readSetting();
+    void hideWidget();
 
 private:
     Ui::TranslateWidget *ui;
     QClipboard *clip;
-    SettingDialog *settingDialog = nullptr;
+    ApiManager* api;
+    QTimer* timer;
+    QPropertyAnimation* animation;
+    bool selectTrans;
     void initSetting();
+    void enterEvent(QEnterEvent *e); // 鼠标移入事件
+    void leaveEvent(QEvent *e); // 鼠标离开事件
 };
 #endif // TRANSLATEWIDGET_H
