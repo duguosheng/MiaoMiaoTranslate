@@ -6,12 +6,12 @@
 #include "settingdialog.h"
 #include "translatewidget.h"
 
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -33,9 +33,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    ApiManager* api;
-    SettingDialog* settingDialog;
-    TranslateWidget* floatWidget;  // 浮动窗口
+    ApiManager *api;
+    SettingDialog *settingDialog;
+    TranslateWidget *floatWidget;  // 浮动窗口
 };
 
 #endif // MAINWINDOW_H

@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     // 添加作者信息
-    QLabel* infoLabel = new QLabel(this);
+    QLabel *infoLabel = new QLabel(this);
     infoLabel->setText("https://github.com/duguosheng/MiaoMiaoTranslate");
     ui->statusbar->addPermanentWidget(infoLabel);
     // 创建设置管理器
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QCoreApplication::setApplicationName("Translation");
     //所有系统都以ini文件方式创建设置对象
     setting = new QSettings(QSettings::IniFormat, QSettings::UserScope,
-                            QApplication::organizationName(), QApplication::applicationName(), this);
+        QApplication::organizationName(), QApplication::applicationName(), this);
     // 初始化设置
     initSetting();
     // 创建设置窗口

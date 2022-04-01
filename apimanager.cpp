@@ -6,9 +6,9 @@ ApiManager::ApiManager(QObject *parent)
 {
     baidu = new BaiduApi(this);
     youdao = new YoudaoApi(this);
-    connect(baidu,  SIGNAL(queryOk(QString)),   this, SLOT(recvOk(QString)));
-    connect(baidu,  SIGNAL(queryFail(QString)), this, SLOT(recvFail(QString)));
-    connect(youdao, SIGNAL(queryOk(QString)),   this, SLOT(recvOk(QString)));
+    connect(baidu, SIGNAL(queryOk(QString)), this, SLOT(recvOk(QString)));
+    connect(baidu, SIGNAL(queryFail(QString)), this, SLOT(recvFail(QString)));
+    connect(youdao, SIGNAL(queryOk(QString)), this, SLOT(recvOk(QString)));
     connect(youdao, SIGNAL(queryFail(QString)), this, SLOT(recvFail(QString)));
 }
 

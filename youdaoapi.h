@@ -3,13 +3,11 @@
 
 #include "translateapi.h"
 
-class YoudaoApi : public TranslateAPI
-{
+class YoudaoApi : public TranslateAPI {
     Q_OBJECT
 public:
     void setTransLang(bool enToZh) override;
-    QUrl getUrl(QString& text) override;
-//    void query(QString& text) override;
+    QUrl getUrl(QString &text) override;
 
     explicit YoudaoApi(QObject *parent = nullptr);
 private:

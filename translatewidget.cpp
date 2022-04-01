@@ -15,9 +15,9 @@ TranslateWidget::TranslateWidget(QWidget *parent)
     timer = new QTimer(this);
     clip = QGuiApplication::clipboard();
     animation = new QPropertyAnimation(this, "windowOpacity", this);
-    animation->setDuration(500);
-    animation->setStartValue(1.0);
-    animation->setEndValue(0.5);
+    animation->setDuration(1000);
+    animation->setStartValue(1);
+    animation->setEndValue(0);
     connect(timer, SIGNAL(timeout()), this, SLOT(hideWidget()));
     connect(api, SIGNAL(queryOk(QString)), this, SLOT(showResult(QString)));
     connect(api, SIGNAL(queryFail(QString)), this, SLOT(showError(QString)));

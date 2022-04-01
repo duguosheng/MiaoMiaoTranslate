@@ -16,7 +16,7 @@ void TranslateAPI::query(QString &text)
     manager->get(QNetworkRequest(url));
 }
 
-QString TranslateAPI::calculateHash(const QString& text, QCryptographicHash::Algorithm algo)
+QString TranslateAPI::calculateHash(const QString &text, QCryptographicHash::Algorithm algo)
 {
     return QString(QCryptographicHash::hash(text.toUtf8(), algo).toHex());
 }
@@ -31,7 +31,7 @@ void TranslateAPI::rmLineBreak(QString &text)
         re.setPattern("\\n");
         break;
     case RM_NOPUNC:
-        re.setPattern("[^.!?]\\n");
+        re.setPattern("(?<!\\.|\\!|\\?)\\n");
         break;
     }
     text.replace(re, " ");

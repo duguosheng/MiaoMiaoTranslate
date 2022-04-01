@@ -12,8 +12,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class TranslateWidget; }
 QT_END_NAMESPACE
 
-class TranslateWidget : public QWidget
-{
+class TranslateWidget : public QWidget {
     Q_OBJECT
 
 public:
@@ -32,9 +31,9 @@ private slots:
 private:
     Ui::TranslateWidget *ui;
     QClipboard *clip;
-    ApiManager* api;
-    QTimer* timer;
-    QPropertyAnimation* animation;
+    ApiManager *api;
+    QTimer *timer;
+    QPropertyAnimation *animation;
     bool selectTrans;
     void initSetting();
     void enterEvent(QEnterEvent *e); // 鼠标移入事件

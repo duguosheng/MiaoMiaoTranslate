@@ -5,16 +5,15 @@
 #include "baiduapi.h"
 #include "youdaoapi.h"
 
-class ApiManager : public QObject
-{
+class ApiManager : public QObject {
     Q_OBJECT
 public:
-    BaiduApi* baidu;
-    YoudaoApi* youdao;
-    TranslateAPI* currentApi;
+    BaiduApi *baidu;
+    YoudaoApi *youdao;
+    TranslateAPI *currentApi;
     explicit ApiManager(QObject *parent = nullptr);
     void readSetting();
-    void query(QString& text);
+    void query(QString &text);
     void setTransLang(bool enToZh);
 
 public slots:

@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <QDir>
 
-QSettings* setting = nullptr;
+QSettings *setting = nullptr;
 
 /**
  * @brief appAutoRun 设置开机自启动

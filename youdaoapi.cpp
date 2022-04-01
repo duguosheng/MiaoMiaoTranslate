@@ -5,7 +5,7 @@
 
 YoudaoApi::YoudaoApi(QObject *parent)
     : TranslateAPI{parent},
-      baseUrl("https://openapi.youdao.com/api")
+    baseUrl("https://openapi.youdao.com/api")
 {
     fromLang = "en";
     toLang = "zh-CHS";
@@ -61,14 +61,14 @@ QUrl YoudaoApi::getUrl(QString &text)
     QString signHash = calculateHash(sign, QCryptographicHash::Sha256);
 
     QUrlQuery query;
-    query.addQueryItem("from",     fromLang);
-    query.addQueryItem("to",       toLang);
+    query.addQueryItem("from", fromLang);
+    query.addQueryItem("to", toLang);
     query.addQueryItem("signType", "v3");
-    query.addQueryItem("curtime",  curTime);
-    query.addQueryItem("appKey",   appid);
-    query.addQueryItem("q",        text);
-    query.addQueryItem("salt",     salt);
-    query.addQueryItem("sign",     signHash);
+    query.addQueryItem("curtime", curTime);
+    query.addQueryItem("appKey", appid);
+    query.addQueryItem("q", text);
+    query.addQueryItem("salt", salt);
+    query.addQueryItem("sign", signHash);
 
     res.setQuery(query);
     return res;

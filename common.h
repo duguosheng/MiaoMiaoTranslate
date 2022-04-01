@@ -5,7 +5,7 @@
 #include "baiduapi.h"
 #include "youdaoapi.h"
 
-extern QSettings* setting;
+extern QSettings *setting;
 
 void autoStart(bool isAutoRun);
 #endif // COMMON_H

@@ -4,8 +4,7 @@
 #include <QObject>
 #include <QtNetwork>
 
-class TranslateAPI : public QObject
-{
+class TranslateAPI : public QObject {
     Q_OBJECT
 public:
     enum {
@@ -19,10 +18,10 @@ public:
     QString toLang;
     QNetworkAccessManager *manager;
     virtual void setTransLang(bool enToZh) = 0;
-    virtual QUrl getUrl(QString& text) = 0;
-    virtual void query(QString& text);
-    QString calculateHash(const QString& text, QCryptographicHash::Algorithm algo = QCryptographicHash::Md5);
-    void rmLineBreak(QString& text);
+    virtual QUrl getUrl(QString &text) = 0;
+    virtual void query(QString &text);
+    QString calculateHash(const QString &text, QCryptographicHash::Algorithm algo = QCryptographicHash::Md5);
+    void rmLineBreak(QString &text);
 
     explicit TranslateAPI(QObject *parent = nullptr);
 signals:

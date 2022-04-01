@@ -5,7 +5,7 @@
 
 BaiduApi::BaiduApi(QObject *parent)
     : TranslateAPI{parent},
-      baseUrl("http://api.fanyi.baidu.com/api/trans/vip/translate")
+    baseUrl("http://api.fanyi.baidu.com/api/trans/vip/translate")
 {
     fromLang = "en";
     toLang = "zh";
@@ -56,12 +56,12 @@ QUrl BaiduApi::getUrl(QString &text)
     QString signHash = calculateHash(sign);
 
     QUrlQuery query;
-    query.addQueryItem("q",     text);
-    query.addQueryItem("from",  fromLang);
-    query.addQueryItem("to",    toLang);
+    query.addQueryItem("q", text);
+    query.addQueryItem("from", fromLang);
+    query.addQueryItem("to", toLang);
     query.addQueryItem("appid", appid);
-    query.addQueryItem("salt",  salt);
-    query.addQueryItem("sign",  signHash);
+    query.addQueryItem("salt", salt);
+    query.addQueryItem("sign", signHash);
 
     res.setQuery(query);
     return res;
