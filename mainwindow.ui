@@ -84,7 +84,7 @@
     <string>设置(&amp;S)</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+,</string>
+    <string>Ctrl+C, Ctrl+C</string>
    </property>
   </action>
   <action name="action_T">

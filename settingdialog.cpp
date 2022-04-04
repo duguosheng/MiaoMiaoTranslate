@@ -2,6 +2,8 @@
 #include "ui_settingdialog.h"
 #include "common.h"
 
+#include <QFontDialog>
+
 const QString SettingDialog::apiType[] = {"baidu", "youdao"};
 
 SettingDialog::SettingDialog(QWidget *parent) :
@@ -9,6 +11,7 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui(new Ui::SettingDialog)
 {
     ui->setupUi(this);
+    ui->lineEditFont->setReadOnly(true);;
     initDialog();
 }
 
@@ -42,6 +45,13 @@ void SettingDialog::initDialog()
         ui->cBoxRmLB->setCurrentIndex(1);
     else
         ui->cBoxRmLB->setCurrentIndex(2);
+
+    QString fontFamily = setting->value("fontfamily", "Microsoft YaHei UI").toString();
+    qreal fontSize = setting->value("fontsize", "9").toDouble();
+    font.setFamily(fontFamily);
+    font.setPointSizeF(fontSize);
+    ui->lineEditFont->setText(fontFamily + " : " + QString::number(fontSize));
+
     setting->endGroup();
 
     ui->lineEditBaiduKey->setEchoMode(QLineEdit::Password);
@@ -77,6 +87,8 @@ void SettingDialog::on_btnSave_clicked()
         break;
     default: break;
     }
+    setting->setValue("fontfamily", font.family());
+    setting->setValue("fontsize", font.pointSizeF());
     setting->endGroup();
 
     setting->beginGroup("Baidu");
@@ -97,5 +109,13 @@ void SettingDialog::on_btnSave_clicked()
 void SettingDialog::on_btnClose_clicked()
 {
     close();
+}
+
+
+void SettingDialog::on_btnFont_clicked()
+{
+    bool ok;
+    font = QFontDialog::getFont(&ok);
+    ui->lineEditFont->setText(font.family() + " : " + QString::number(font.pointSizeF()));
 }
 

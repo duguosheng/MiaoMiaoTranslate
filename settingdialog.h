@@ -17,11 +17,12 @@ public:
 
 private slots:
     void on_btnSave_clicked();
-
     void on_btnClose_clicked();
+    void on_btnFont_clicked();
 
 private:
     Ui::SettingDialog *ui;
+    QFont font;
     static const QString apiType[];
     void initDialog();
 signals:

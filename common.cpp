@@ -1,8 +1,10 @@
 #include "common.h"
 #include <QApplication>
 #include <QDir>
+#include <QFont>
 
 QSettings *setting = nullptr;
+QFont textFont;
 
 /**
  * @brief appAutoRun 设置开机自启动

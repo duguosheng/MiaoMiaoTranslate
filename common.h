@@ -6,6 +6,7 @@
 #include "youdaoapi.h"
 
 extern QSettings *setting;
+extern QFont textFont;
 
 void autoStart(bool isAutoRun);
 #endif // COMMON_H

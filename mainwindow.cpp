@@ -76,6 +76,10 @@ void MainWindow::initSetting()
         setting->setValue("api", "baidu");
     if (!setting->contains("rmlb"))  // remove line break
         setting->setValue("rmlinebreak", "nothing");
+    if (!setting->contains("fontfamily"))
+        setting->setValue("fontfamily", "Microsoft YaHei UI");
+    if (!setting->contains("fontsize"))  // remove line break
+        setting->setValue("fontsize", "9");
     setting->endGroup();
 
     setting->beginGroup("Baidu");
@@ -97,6 +101,10 @@ void MainWindow::readSetting()
 {
     setting->beginGroup("Global");
     autoStart(setting->value("autostart", false).toBool());
+    textFont.setFamily(setting->value("fontfamily", "Microsoft YaHei UI").toString());
+    textFont.setPointSizeF(setting->value("fontsize", "9").toDouble());
+    ui->textEditInput->setFont(textFont);
+    ui->textBrowseroutput->setFont(textFont);
     setting->endGroup();
     api->readSetting();
     floatWidget->readSetting();
