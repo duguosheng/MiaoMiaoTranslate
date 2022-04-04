@@ -12,7 +12,6 @@ TranslateWidget::TranslateWidget(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-    setMouseTracking(true);
     api = new ApiManager(this);
     timer = new QTimer(this);
     clip = QGuiApplication::clipboard();
@@ -119,8 +118,6 @@ void TranslateWidget::mousePressEvent(QMouseEvent *event)
         widgetTopLeftPoint = this->frameGeometry().topLeft();
     }
 }
-
-int i = 0;
 
 void TranslateWidget::mouseMoveEvent(QMouseEvent *event)
 {
